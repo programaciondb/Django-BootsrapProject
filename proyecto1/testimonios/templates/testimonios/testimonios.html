@@ -1,0 +1,31 @@
+{% extends "core/base.html" %}
+{% block title %}
+Testimonios
+{% endblock title %}
+{% block content %}
+{% load static %}
+
+<div class="container">
+    {% if user.is_authenticated %}
+    <h3><a href="{% url 'admin:app_list' 'testimonios' %}">Bienvenido {{user}}. Haz clic para administrar los
+        testimonios.</a></h3>
+    {% endif %}
+  <div class="card-deck">
+    <div class="row justify-content-md-center">
+
+      {% for testimonio in testimonios %}
+      <div class="col-sm-6 col-md-4">
+        <div class="card mb-4">
+          <img src="{{testimonio.imagen.url}}" class="card-img-top p-3" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{testimonio.name}}</h5>
+            <p class="card-text">{{testimonio.mensaje}}</p>
+            <p class="card-text"><small class="text-muted">{{testimonio.created}}</small></p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock content %}

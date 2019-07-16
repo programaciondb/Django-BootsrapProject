@@ -1,0 +1,61 @@
+{% extends "core/base.html" %}
+{% block title %}
+Contacto
+{% endblock title %}
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4 text-center">Contáctanos</h1>
+    <!-- Formulario -->
+    <!-- Form generado por Django 
+    <form action="" , method="POST" , class="p-4">
+      {% csrf_token %}
+      <table>
+        {{form.as_table}}
+      </table>
+      <input type="submit" , value="Enviar">
+    </form>
+    {% if 'ok' in request.GET %}
+    <p class="lead text-center"><b>Su mensaje se ha enviado correctamente.</b></p>
+    {% endif %}
+-->
+    <div class="p-4">
+      <form action="" , method="POST">
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+
+        <h3>Bienvenido {{user}}.<a href="{% url 'admin:app_list' 'contact' %}"> Haz clic para ver los contactos
+            enviados.</a></h3>
+        {% endif %}
+        <div class="form-group">
+          <label for="name" id="name" name="name">Nombre</label><br>
+          {{form.name}}
+          <!-- <input class="form-control" id="nameInputForm" placeholder="Juanito Pereira">-->
+        </div>
+        {{form.name.errors}}
+
+        <div class="form-group">
+          <label for="email" id="email" name="email">Email</label> <br>
+          {{form.email}}
+
+          <!--<input type="email" class="form-control" id="emailInputForm" placeholder="correo@gmail.com">-->
+        </div>
+        {{form.email.errors}}
+
+        <div class="form-group">
+          <label for="message" id="message" name="message">Mensaje</label><br>
+          {{form.message}}
+          <!-- <textarea class="form-control" id="mensajeInputForm" rows="3"></textarea>-->
+        </div>
+        {{form.message.errors}}
+        <button type="submit" class="btn btn-primary btn-lg btn-block" , value="Enviar">Enviar</button>
+      </form>
+
+      {% if 'ok' in request.GET %}
+      <p class="lead text-center"><b>Su mensaje se ha enviado correctamente.</b></p>
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+{% endblock content %}

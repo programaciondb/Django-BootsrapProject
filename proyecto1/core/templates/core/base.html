@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}">
+    <!-- CSS Propio-->
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <title> {% block title %}{% endblock title %} - CalculaUF</title>
+</head>
+
+<body>
+
+    <div class="container-fluid bg-dark">
+        <!-- navbar -->
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark container mb-4">
+            <a class="navbar-brand" href="#">
+           
+                <img src="{% static 'core/img/logo.svg'%}" width="30" height="30" class="d-inline-block align-top" alt="">
+                CalculaUF
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link" href="{% url 'about' %}">Quienes Somos</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link" href="{% url 'testimonials' %}">Testimonios</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link" href="{% url 'contact' %}">Contacto</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Servicios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Desarrollo Web</a>
+                            <a class="dropdown-item" href="#">Desarrollo Móvil </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Próximamente</a>
+                        </div>
+                    </li>
+                    {% if not user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'admin:login' %}">Iniciar Sesión</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin:logout' %}">Cerrar Sesión</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <span class="navbar-text">
+                    +56 9 6919 3483
+                </span>
+            </div>
+        </nav>
+        <!-- fin navbar -->
+    
+
+        {% block content %}
+        
+        {% endblock content %}
+
+
+        <!-- 3er jumbo tron -->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="jumbotron text-center">
+                        <form id="suscribirseForm" action="#">
+                            <div class="form-group" id="formulario">
+                                <label for="exampleInputEmail1" class="h1 display-5">Suscribete para novedades!</label>
+                                <hr class="my-4">
+                                <input type="email" class="form-control" name="email" id="email"
+                                    aria-describedby="emailHelp" placeholder="ejemplo@ejemplo.com">
+                                <small id="emailHelp" class="form-text text-muted">No compartiremos tu correo con nadie
+                                    (guiño
+                                    guiño)</small>
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Recibir Ofertas Especiales</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- fin 3erjumbo tron -->
+
+        <!-- footer -->
+        <div class="container">
+            <footer class="bg-info text-white mt-4 py-4 text-center rounded">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p class="p-1 lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi non maxime
+                            praesentium?</p>
+                    </div>
+                </div>
+            </footer>
+            <!-- footer -->
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- "{% static 'validate.js' %}" -->
+
+    
+    <script src="{% static 'core/js/jquery-3.3.1.slim.min.js' %}"></script>
+    <script src="{% static 'core/js/popper.min.js' %}"></script>
+    <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
+    <!-- validacion -->
+    <script type="text/javascript"
+        src="{% static 'core/js/jquery.validate.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/js/validate.js' %}"></script>
+    <!-- script propio JS-->
+    <script type="text/javascript" src="{% static 'core/js/script.js' %}"></script>
+</body>
+
+</html>
